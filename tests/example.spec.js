@@ -26,3 +26,15 @@ test('drag and drop', async ({ page }) => {
   await page.goto('https://formy-project.herokuapp.com/dragdrop');
 await page.locator('#image').dragTo(await page.locator('#box'));
 });
+
+test('test alert', async ({ page }) => {
+  await page.goto('https://formy-project.herokuapp.com/modal');
+await page.locator('button#modal-button').click();
+await page.waitForTimeout(2000);
+await page.locator('button#ok-button').click();
+await page.locator('button#close-button').click();
+await expect(page).toHaveURL('https://formy-project.herokuapp.com/modal');
+
+});
+
+
